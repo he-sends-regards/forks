@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchForm from '../search-form/search-form';
+import Search from '../search/search';
 import './home-page.css';
 
 const HomePage = () => {
@@ -9,7 +9,7 @@ const HomePage = () => {
         Welcome to «Forks»
       </span>
 
-      <SearchForm />
+      <Search />
     </div>
   );
 };
