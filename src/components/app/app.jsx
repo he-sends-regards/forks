@@ -13,7 +13,7 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route path={AppRoute.RESULTS}>
+        <Route path={AppRoute.SOURCE}>
           <Results />
         </Route>
         <Route path={AppRoute.ROOT} exact>

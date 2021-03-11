@@ -1,4 +1,4 @@
 export const AppRoute = {
   ROOT: '/',
-  RESULTS: '/results',
+  SOURCE: '/source',
 };

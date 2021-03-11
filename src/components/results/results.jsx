@@ -19,7 +19,7 @@ const Results = ({repo, forks, saveRepo, addForks}) => {
       1,
   );
 
-  const getDataFromParams = async () => {
+  const loadDataWithParams = async () => {
     const responseData = await getGithubRepo(
         urlParams.get('owner'),
         urlParams.get('repository'),
@@ -40,7 +40,7 @@ const Results = ({repo, forks, saveRepo, addForks}) => {
 
   useEffect(() => {
     if (urlParams.get('owner') && urlParams.get('repository')) {
-      getDataFromParams();
+      loadDataWithParams();
     }
   }, []);
 
