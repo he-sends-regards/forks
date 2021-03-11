@@ -6,9 +6,6 @@
   justify-content: space-evenly;
   align-items: center;
   font-family: 'Oswald', sans-serif;
-  font-size: 3rem !important;
-  font-weight: bold !important;
-  text-transform: uppercase;
 }
 
 @media screen and (max-width: 800px) {

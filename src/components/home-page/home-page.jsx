@@ -5,7 +5,7 @@ import './home-page.css';
 const HomePage = () => {
   return (
     <div className="home">
-      <span>
+      <span className="logo">
         Welcome to «Forks»
       </span>
 
