@@ -36,3 +36,8 @@
   color: white;
   margin: 0 30px;
 }
+
+.favLogo {
+  width: 20px;
+  cursor: pointer;
+}

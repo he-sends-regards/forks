@@ -5,7 +5,9 @@ import {useLocation} from 'react-router';
 import PropTypes from 'prop-types';
 import Search from '../search/search';
 import {ActionType} from '../../store/action';
-import {getGithubForks, getGithubRepo} from '../../utils';
+import {addForkToFavorite, getGithubForks, getGithubRepo} from '../../utils';
+import favoriteLogo from './img/fav.svg';
+import notFavoriteLogo from './img/no-fav.svg';
 import './results.css';
 
 const Results = ({repo, forks, saveRepo, addForks}) => {
@@ -45,10 +47,6 @@ const Results = ({repo, forks, saveRepo, addForks}) => {
   }, []);
 
   const [areButtonsDisabled, setAreButtonsDisabled] = useState(false);
-
-  // useEffect(() => {
-  //   setPage(1);
-  // }, [repo]);
 
   return (
     <div className="results">
@@ -93,18 +91,31 @@ const Results = ({repo, forks, saveRepo, addForks}) => {
                   <th>Owner</th>
                   <th>Stars count</th>
                   <th>Link</th>
+                  <th>Is favorite</th>
                 </tr>
               </tbody>
               <tbody>
                 {
                   forks && forks.length !== 0 && forks.map((fork) => (
-                    <tr key={`${fork.id}`}>
-                      <td>{fork.owner.login}</td>
-                      <td>{fork.stargazers_count}</td>
+                    <tr key={`${fork.owner}`}>
+                      <td>{fork.owner}</td>
+                      <td>{fork.starsCount}</td>
                       <td>
-                        <a href={fork.html_url} target="blank">
-                          {fork.html_url}
+                        <a href={fork.url} target="blank">
+                          {fork.url}
                         </a>
+                      </td>
+                      <td>
+                        {
+                          <img
+                            src={fork.isFavorite ?
+                              favoriteLogo : notFavoriteLogo}
+                            className="favLogo"
+                            onClick={() => {
+                              addForkToFavorite(fork);
+                            }}
+                          />
+                        }
                       </td>
                     </tr>
                   ))
