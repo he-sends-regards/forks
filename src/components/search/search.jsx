@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useHistory, useLocation} from 'react-router';
+import {useHistory} from 'react-router';
 import PropTypes from 'prop-types';
 import {AppRoute} from '../../const';
 import SearchForm from './search-form/search-form';
@@ -13,7 +13,6 @@ const Search = ({saveRepo, addForks}) => {
   const [isFormDisabled, setIsFormDisabled] = useState(false);
   const [error, setError] = useState('');
   const history = useHistory();
-  const currentLocation = useLocation().pathname;
 
   const onOwnerInputChange = (evt) => {
     setOwnerInputValue(evt.target.value);
@@ -44,10 +43,7 @@ const Search = ({saveRepo, addForks}) => {
       addForks(responseData.forks);
 
       setIsFormDisabled(false);
-      setOwnerInputValue('');
-      setRepositoryInputValue('');
-      return currentLocation === AppRoute.ROOT &&
-        history.push(AppRoute.RESULTS);
+      history.push(AppRoute.SOURCE);
     } else {
       setIsFormDisabled(false);
       setError('Such user/organization or repository is missing in GitHub');
