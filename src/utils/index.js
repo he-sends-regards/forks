@@ -1,8 +1,18 @@
+import firebase from 'firebase/app';
+
 export const getGithubForks = async (forksUrl, page=1, count=5) => {
   const response = await fetch(`${forksUrl}?page=${page}&per_page=${count}`);
 
   if (response.ok) {
-    return await response.json();
+    const forks = await response.json();
+
+    return forks.map((fork) => ({
+      id: fork.id,
+      url: fork.html_url,
+      starsCount: fork.stargazers_count,
+      owner: fork.owner.login,
+      isFavorite: false,
+    }));
   }
   return null;
 };
@@ -29,4 +39,8 @@ export const getGithubRepo = async (
     };
   }
   return null;
+};
+
+export const addForkToFavorite = (fork) => {
+  firebase.database().ref('favoriteForks/' + fork.id).set(fork);
 };
