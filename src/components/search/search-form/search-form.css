@@ -10,6 +10,13 @@
   align-items: center;
 }
 
+.search-form__error-message {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  z-index: 1;
+}
+
 .search-form__input-group {
   width: 100%;
   display: flex;

@@ -20,12 +20,8 @@ const SearchForm = ({
         show={error.length !== 0}
         onClose={() => setError('')}
         delay={3000}
+        className="search-form__error-message"
         autohide
-        style={{
-          position: 'absolute',
-          top: '40%',
-          zIndex: 1,
-        }}
       >
         <Toast.Header>
           <strong className="mr-auto">Forks</strong>
