@@ -23,18 +23,19 @@ const Search = () => {
     const response = await fetch(`https://api.github.com/users/${ownerInputValue}/repos`);
     const data = await response.json();
 
-    if (response.status === 200) {
+    if (response.ok) {
       const requiredRepo = data.filter((repo) => {
         return repo.name === repositoryInputValue;
       });
+
       if (requiredRepo.length === 0) {
         setError('Such user or repository is missing in GitHub');
       }
-      setIsFormDisabled(false);
       console.log(requiredRepo);
     } else {
       alert('Incorrect request! Try again...');
     }
+    setIsFormDisabled(false);
   };
 
   return (
