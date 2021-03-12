@@ -43,7 +43,7 @@ export const getFavoriteForks = async () => {
 
   await db.once('value', async (snapshot) => {
     const dbForks = await snapshot.val();
-    favoriteForks.push(...Object.keys(dbForks));
+    dbForks && favoriteForks.push(...Object.keys(dbForks));
   });
   return favoriteForks.map((id) => Number(id));
 };
