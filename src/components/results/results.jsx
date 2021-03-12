@@ -53,6 +53,7 @@ const Results = ({
     const responseData = await getGithubRepo(
         urlParams.get('owner'),
         urlParams.get('repository'),
+        urlParams.get('page'),
     );
 
     if (responseData) {

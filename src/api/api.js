@@ -1,8 +1,10 @@
 import firebase from 'firebase/app';
 import {adaptRepoToClient, adaptForksToClient} from '../utils/adapter';
 
-export const getGithubForks = async (forksUrl, page=1, count=5) => {
-  const response = await fetch(`${forksUrl}?page=${page}&per_page=${count}`);
+export const getGithubForks = async (forksUrl, page, count=5) => {
+  const response = await fetch(
+      `${forksUrl}?page=${page || 1}&per_page=${count}`,
+  );
 
   if (response.ok) {
     const forks = await response.json();
