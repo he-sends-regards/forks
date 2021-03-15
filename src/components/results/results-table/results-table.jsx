@@ -103,14 +103,18 @@ const ResultsTable = ({
                             </Button>
                           )
                         }
-                        <Button
-                          variant="primary"
-                          className="flip-btn"
-                          disabled={areButtonsDisabled}
-                          onClick={onPageBtnClick}
-                        >
-                          Next &#8594;
-                        </Button>
+                        {
+                          repo.forksCount / 5 !== page && (
+                            <Button
+                              variant="primary"
+                              className="flip-btn"
+                              disabled={areButtonsDisabled}
+                              onClick={onPageBtnClick}
+                            >
+                              Next &#8594;
+                            </Button>
+                          )
+                        }
                       </th>
                     </tr>
                   )
