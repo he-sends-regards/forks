@@ -24,6 +24,10 @@ const Results = ({
   const [page, setPage] = useState(Number(urlParams.get('page') || 1));
   const [areButtonsDisabled, setAreButtonsDisabled] = useState(false);
 
+  useEffect(() => {
+    setPage(Number(urlParams.get('page') || 1));
+  }, [repo]);
+
   const onPageBtnClick = async (evt) => {
     evt.preventDefault();
     setAreButtonsDisabled(true);
